@@ -1,0 +1,71 @@
+#include <iostream>
+#include "my_time.h"
+#include "my_timer.h"
+#include "msg_printer.h"
+int main() {
+    std::cout<<"********** PHASE 1 ***********"<<"\n";
+    std::cout<<"Time ctor with all the parameters: "<<"\n";
+    Time time_1(100,30,10);
+    std::cout<<time_1<<"\n";
+    std::cout<<"Time ctor with 3000 seconds: "<<"\n";
+    Time time_2(3000);
+    std::cout<<time_2<<"\n";
+    std::cout<<"get_as_str function with false :\n";
+    std::cout<<time_1.get_as_str(false)<<"\n";
+    std::cout<<"get_seconds function :\n";
+    std::cout<<time_1<<" seconds: "<<time_1.get_seconds()<<"\n";
+    std::cout<<"print function: \n";
+    print(time_2);
+    std::cout<<"operator Time + Time : \n";
+    std::cout<<time_1<<" + "<<time_2<<" = "<<time_1+time_2<<"\n";
+    std::cout<<"operator Time + number : \n";
+    std::cout<<time_2<<" + 30 = "<<time_2+30<<"\n";
+    std::cout<<"operator number + Time : \n";
+    std::cout<<"40 + "<<time_1<<" = "<<40+time_1<<"\n";
+    std::cout<<"operator += : \n";
+    time_2+=10;
+    std::cout<<time_2<<" += 10 :"<<time_2<<"\n";
+    std::cout<<"operator == : \n";
+    std::cout<<time_2<<" == "<<time_1<<": "<<(time_2==time_1)<<"\n";
+    std::cout<<"operator != : \n";
+    std::cout<<time_2<<" != "<<time_1<<": "<<(time_2!=time_1)<<"\n";
+    std::cout<<"operator <= : \n";
+    std::cout<<time_2<<" <= "<<time_1<<": "<<(time_2<=time_1)<<"\n";
+    std::cout<<"operator >= : \n";
+    std::cout<<time_2<<" >= "<<time_1<<": "<<(time_2>=time_1)<<"\n";
+    std::cout<<"operator > : \n";
+    std::cout<<time_2<<" > "<<time_1<<": "<<(time_2>time_1)<<"\n";
+    std::cout<<"operator < : \n";
+    std::cout<<time_2<<" < "<<time_1<<": "<<(time_2<time_1)<<"\n";
+    std::cout<<"change delimiters: \n";
+    time_1.print_with_delimiter('-',':');
+    std::cout<<time_1.get_as_str(true)<<"\n";
+    std::cout<<"********** PHASE 2 ***********"<<"\n";
+    MsgPrinter * msgPrinter = new MsgPrinter ("Excellent team");
+    std::cout<<"print of MsgPrinter : \n";
+    msgPrinter->print();
+    std::cout<<"dtor of MsgPrinter : \n";
+    delete msgPrinter;
+   // MsgPrinter * msgPrinter_1 = new MsgPrinter ("Timer 4 min and 10 sec");
+    //Timer timer(Time(0,4,10),msgPrinter_1);
+    std::cout<<"run_time_1:\n";
+    run_timer_1();
+    std::cout<<"run_time_2:\n";
+    run_timer_2();
+    std::cout<<"********** PHASE 3 ***********"<<"\n";
+    MsgPrinterSurrounding msgPrinterSurrounding("msgPrinterSurrounding","before","after");
+    std::cout<<"print of msgPrinterSurrounding:\n";
+    msgPrinterSurrounding.print();
+    MsgPrinterSurrounding msgPrinterSurrounding1("msgPrinterSurrounding1");
+    std::cout<<"print of msgPrinterSurrounding1:\n";
+    msgPrinterSurrounding1.print();
+    std::cout<<"operator = :\n";
+    msgPrinterSurrounding1=msgPrinterSurrounding;
+    std::cout<<" msgPrinterSurrounding1 = msgPrinterSurrounding : \n print of msgPrinterSurrounding1: \n";
+    msgPrinterSurrounding1.print();
+    std::cout<<"run_time_3:\n";
+    run_timer_3();
+    std::cout<<"run_time_4:\n";
+    run_timer_4();
+    return 0;
+}
